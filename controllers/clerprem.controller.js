@@ -606,6 +606,55 @@ export const deleteDocument = async (req, res) => {
 
 }
 
+/* Get all CLERS into Collaborator */
+export const getClers = async (req, res) => {
+
+  try {
+    const collaborator = await Collaborator.findById(req.params.id);
+
+    if (!collaborator) {
+      return res.status(404).json({
+        message: "User doesn´t exists",
+      });
+    }
+   // const clers = collaborator.clers;
+
+    return res.status(200).json( collaborator.clers);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+}
+
+/* Actualizar CLERS en el colaborador */
+export const updateClers = async (req, res) => {
+
+  try {
+    const collaborator = await Collaborator.findById(req.params.id);
+
+    if (!collaborator) {
+      return res.status(404).json({
+        message: "User doesn´t exists",
+      });
+    }
+    const newClers = req.body.porcent;
+
+    const clers = collaborator.clers;
+
+    // Actualizar el campo "clers" 
+    clers = newClers;
+
+    // Guardar el colaborador actualizado en la base de datos
+    await collaborator.save();
+
+    return res.status(201).json({ message: "Clers actualizado"});
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+}
+
+
 
 // Model Events
 

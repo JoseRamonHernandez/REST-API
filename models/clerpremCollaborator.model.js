@@ -57,6 +57,10 @@ const collaboratorSchema = mongoose.Schema({
     type: String,
     required: false,
   },
+  clers: {
+    type: Number,
+    default: 0
+  },
   vacancies_applied: [{
     name_vacancie: String,
     application_date: String
@@ -87,6 +91,7 @@ const collaboratorSchema = mongoose.Schema({
     text_document: String,
     url_document: String
   }]
+  
 });
 
 export default mongoose.model('Collaborator', collaboratorSchema)

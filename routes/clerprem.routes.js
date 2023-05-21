@@ -26,6 +26,8 @@ import {
   insertDocument,
   showDocuments,
   deleteDocument,
+  getClers,
+  updateClers,
   getEvents,
   createEvent,
   updateEvent,
@@ -139,6 +141,10 @@ router.post('/insertDocument/:id', insertDocument)
 router.get('/showDocuments/:id', showDocuments)
 
 router.get('/:idCollaborator/deleteDocument/:idDocument', deleteDocument)
+
+router.get('/getClers/:id', getClers)
+
+router.post('/updateClers/:id',updateClers)
 
 //RUTAS PARA EVENTOS
 
